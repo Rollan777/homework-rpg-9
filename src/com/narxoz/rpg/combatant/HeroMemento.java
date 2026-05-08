@@ -5,9 +5,6 @@ import java.util.List;
 
 /**
  * Immutable snapshot of a hero's mutable state.
- *
- * This class intentionally lives next to {@link Hero} so the originator can
- * restore itself without exposing internals to other packages.
  */
 public final class HeroMemento {
 
@@ -35,7 +32,9 @@ public final class HeroMemento {
         this.maxHp = maxHp;
         this.attackPower = attackPower;
         this.defense = defense;
-        this.inventorySnapshot = inventorySnapshot == null ? List.of() : List.copyOf(inventorySnapshot);
+        this.inventorySnapshot = inventorySnapshot == null
+                ? List.of()
+                : List.copyOf(inventorySnapshot);
     }
 
     String getName() {
