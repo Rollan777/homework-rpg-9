@@ -35,10 +35,12 @@ public class Inventory {
 
     /**
      * Visits each artifact in order.
-     *
-     * @param visitor the visitor to apply to each artifact
      */
     public void accept(ArtifactVisitor visitor) {
+        if (visitor == null) {
+            return;
+        }
+
         for (Artifact artifact : artifacts) {
             artifact.accept(visitor);
         }
@@ -46,8 +48,6 @@ public class Inventory {
 
     /**
      * Creates a shallow copy of this inventory.
-     *
-     * @return a new inventory containing the same artifact references
      */
     public Inventory copy() {
         return new Inventory(artifacts);
